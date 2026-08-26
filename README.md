@@ -1,8 +1,9 @@
-# Face 2 Fate 🎥🤖
-
+<p align="center">
+  <img src="assets/banner.png" alt="Face 2 Fate - AI-Powered Multimodal Interview Analysis">
+</p>
 **Face 2 Fate** is an AI-powered multi modal system that analyzes a candidate's interview performance and generates a confidence score with personalized feedback.
 
-The application combines **computer vision, audio analysis, speech recognition, NLP, and an LLM-based feedback system** to evaluate multiple aspects of interview communication.
+The application combines **computer vision, audio analysis, speech recognition, NLP system** to evaluate multiple aspects of interview communication.
 
 ---
 
@@ -164,7 +165,9 @@ Face-2-Fate/
 ├── ⚙️ Configuration
 │   ├── requirements.txt        # Python dependencies
 │   ├── .env.example            # Environment variable template
-│   └── .gitignore              # Git ignore rules
+│   ├── .gitignore              # Git ignore rules
+│   ├── schema.sql              # MySQL database schema
+│   └── download_models.sh      # Script to download MediaPipe model files
 │
 └── 📖 README.md                # Project documentation
 ```
@@ -442,7 +445,31 @@ Place them in the paths expected by the application.
 
 These model files are intentionally excluded from Git tracking because of their size and/or distribution considerations.
 
-> **Note:** since these files aren't in the repo, you'll need to obtain them separately (e.g. from the original project owner, a release asset, or Git LFS/cloud storage link) and place them at the exact paths above before running the app.
+### Download Links
+
+| Model | Download |
+|---|---|
+| `face_landmarker.task` | [MediaPipe Face Landmarker (float16)](https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/latest/face_landmarker.task) |
+| `hand_landmarker.task` | [MediaPipe Hand Landmarker (float16)](https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/latest/hand_landmarker.task) |
+| `enet_b0_8_best_afew.onnx` | [HSEmotion model repo](https://github.com/HSE-asavchenko/face-emotion-recognition) — see `models/affectnet_emotions/onnx` in that repo and check the license before redistributing |
+
+Quick download for the two MediaPipe models — a script is included in the repo for this:
+
+```bash
+chmod +x download_models.sh
+./download_models.sh
+```
+
+This downloads `face_landmarker.task` and `hand_landmarker.task` into the project root automatically. It does **not** download the HSEmotion ONNX model — you'll still need to grab `enet_b0_8_best_afew.onnx` manually from the link above and place it at `models/enet_b0_8_best_afew.onnx`.
+
+Alternatively, download the two MediaPipe models manually:
+
+```bash
+curl -L -o face_landmarker.task https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/latest/face_landmarker.task
+curl -L -o hand_landmarker.task https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/latest/hand_landmarker.task
+```
+
+> **Note:** since these files aren't in the repo, you'll need to obtain them (via the script/links above, or from the original project owner / a release asset / Git LFS) and place them at the exact paths shown before running the app.
 
 
 ---
@@ -558,7 +585,7 @@ Potential improvements include:
 
 ---
 
-## 🎯 Project Goal
+## 🎯 Conclusion
 
 Face 2 Fate aims to help candidates practice interviews by converting observable interview behaviors into actionable feedback.
 
@@ -581,16 +608,3 @@ AI Coaching Feedback
 ```
 
 ---
-
-## 👩‍💻 Author
-
-**Sana Khan**
-
-Computer Science & Engineering  
-AI / ML • Python • Backend Development
-
----
-
-## 📜 License
-
-Add your preferred open-source license here before publishing the repository.
