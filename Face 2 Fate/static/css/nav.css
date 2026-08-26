@@ -1,0 +1,317 @@
+/* ============================================================
+   nav.css  —  Shared Navbar + Footer  |  Face 2 Fate
+   Theme-aware: uses CSS variables from theme.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..900;1,9..40,100..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');family=Noto+Sans:ital,wght@0,100..900;1,100..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');family=Roboto:ital,wght@0,100..900;1,100..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');family=Rubik:ital,wght@0,300..900;1,300..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* =====================
+   Navbar
+   ===================== */
+.navbar {
+    text-decoration: none;
+    font-family: "DM Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-nav);
+}
+
+nav div ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+nav div ul > a {
+    margin-right: 48px;
+}
+
+nav div ul > a:not(:last-child) {
+    margin-right: 8px;
+}
+
+nav div ul li {
+    list-style: none;
+    display: none !important;
+    margin-right: 22px;
+    font-style: italic;
+    color: var(--text-nav);
+}
+
+.logo {
+    margin-left: 86px;
+}
+
+.logo-img {
+    height: 46px;
+    display: block;
+}
+
+.signup {
+    margin-right: 48px;
+}
+
+/* =====================
+   Brutal Navbar Shell
+   ===================== */
+.Brutal {
+    background-color: var(--bg-nav);
+    height: 54px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+    border: 2px solid var(--border-nav);
+    padding-right: 8px;
+}
+
+.navbar--fixed {
+    position: fixed;
+    z-index: 9999;
+}
+
+.Brutal::before {
+    content: "";
+    width: 4px;
+    height: 28px;
+    background: var(--brutal-pseudo-bg);
+    border: 2px solid var(--border-nav);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    position: absolute;
+    border-top: 0;
+    border-left: 0;
+    border-bottom: 0;
+    bottom: -7px;
+    left: 4px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.Brutal::after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    bottom: -2px;
+}
+
+/* =====================
+   Login / Signup Buttons
+   ===================== */
+.login {
+    background: var(--btn-login-bg);
+    color: var(--btn-login-text);
+    border: none;
+    padding: 10px 20px;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    width: 120px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transform: skew(-21deg);
+    position: relative;
+}
+
+.login::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    left: 0;
+    background: var(--accent-login-bg);
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.5s;
+}
+
+.login:hover {
+    color: var(--btn-login-hover-text);
+}
+
+.login:hover::before {
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+
+/* =====================
+   Underline Nav Links
+   ===================== */
+.underline {
+    color: var(--text-nav);
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+}
+
+.underline::after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: var(--text-nav);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.underline:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* =====================
+   Footer
+   ===================== */
+footer {
+    margin-top: 24px;
+}
+
+.footer {
+    width: 100%;
+    height: 64px;
+    background-color: var(--bg-footer);
+    color: var(--text-footer);
+}
+
+.footer-inner {
+    justify-content: space-around;
+}
+
+.footer-links {
+    gap: 8px;
+}
+
+.footer p {
+    color: var(--text-footer);
+    font-weight: 400;
+    font-size: 14px;
+    font-family: "DM Sans", sans-serif;
+    margin: 0;
+}
+
+/* =====================
+   Media — Tablet (max-width: 1200px)
+   ===================== */
+@media (max-width: 1200px) {
+    .login {
+        font-size: 13px;
+    }
+}
+
+/* =====================
+   Media — Smartphone (max-width: 768px)
+   ===================== */
+@media (max-width: 768px) {
+
+    .navbar {
+        font-size: 14px;
+    }
+
+    .logo {
+        margin-left: 4px;
+    }
+
+    nav div ul li {
+        display: none;
+    }
+
+    nav div ul {
+        flex-wrap: nowrap;
+        gap: 0;
+        align-items: center;
+    }
+
+    nav div ul > a {
+        margin-right: 12px;
+    }
+
+    nav div ul > a:not(:last-child) {
+        margin-right: 6px;
+    }
+
+    .signup {
+        margin-right: 0;
+    }
+
+    .signin {
+        margin-right: 0;
+    }
+
+    .login {
+        width: 90px;
+        font-size: 13px;
+        padding: 9px 10px;
+    }
+
+    .footer {
+        height: auto !important;
+        padding: 14px 0 !important;
+    }
+
+    .footer-inner {
+        flex-direction: column !important;
+        gap: 6px !important;
+        text-align: center !important;
+    }
+
+    .footer-inner p {
+        margin: 0 !important;
+        font-size: 12px !important;
+    }
+}
+
+/* =====================
+   Media — Small phones (max-width: 480px)
+   ===================== */
+@media (max-width: 480px) {
+
+    nav div ul > a {
+        margin-right: 8px;
+    }
+
+    nav div ul > a:not(:last-child) {
+        margin-right: 4px;
+    }
+
+    .signup {
+        margin-right: 0;
+    }
+
+    .signin {
+        margin-right: 0;
+    }
+
+    .login {
+        width: 80px;
+        font-size: 12px;
+        padding: 8px 8px;
+    }
+}

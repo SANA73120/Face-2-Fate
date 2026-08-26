@@ -1,0 +1,456 @@
+/* ============================================================
+   auth.css  —  Login / Signup Pages  |  Face 2 Fate
+   Theme-aware: uses CSS variables from theme.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..900;1,9..40,100..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');family=Noto+Sans:ital,wght@0,100..900;1,100..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');family=Roboto:ital,wght@0,100..900;1,100..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');family=Rubik:ital,wght@0,300..900;1,300..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-body);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  font-family: "DM Sans", sans-serif;
+  color: var(--text-body);
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* =====================
+   Navbar
+   ===================== */
+.navbar {
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-nav);
+}
+
+nav div ul li {
+  list-style: none;
+  display: none;
+  margin-right: 22px;
+  font-style: italic;
+}
+
+.signup {
+  margin-right: 48px;
+}
+
+.logo {
+  margin-left: 86px;
+}
+
+.logo-img {
+  height: 46px;
+}
+
+.Brutal {
+  background-color: var(--bg-nav);
+  height: 54px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid var(--border-nav);
+  padding-right: 8px;
+}
+
+.Brutal:before {
+  content: "";
+  width: 4px;
+  height: 28px;
+  background: var(--brutal-pseudo-bg);
+  border: 2px solid var(--border-nav);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  border-top: 0;
+  border-left: 0;
+  border-bottom: 0;
+  bottom: -7px;
+  left: 4px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.Brutal:after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  bottom: -2px;
+}
+
+/* =====================
+   Login Button
+   ===================== */
+.login {
+  background: var(--btn-login-bg);
+  color: var(--btn-login-text);
+  border: none;
+  padding: 10px 20px;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  width: 120px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skew(-21deg);
+  position: relative;
+}
+
+.login::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  left: 0;
+  background: var(--accent-login-bg);
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.login:hover {
+  color: var(--btn-login-hover-text);
+}
+
+.login:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+/* =====================
+   Underline Link
+   ===================== */
+.underline {
+  color: var(--text-nav);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+.underline:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: var(--text-nav);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.underline:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+/* =====================
+   Card
+   ===================== */
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 2px solid var(--border-card);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  margin-top: 16px;
+  height: 600px;
+  width: 85%;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 40%, transparent);
+  border-color: var(--accent);
+}
+
+/* Card inner text */
+.card h1,
+.card h2 {
+  color: var(--text-primary);
+}
+
+/* =====================
+   Form Inputs
+   ===================== */
+.form-wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.input {
+  font-size: 1em;
+  padding: 0.6em 1em;
+  border: 1px solid var(--border-card);
+  background-color: var(--bg-input);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  width: 100%;
+  color: var(--text-primary);
+}
+
+.input:hover {
+  background-color: var(--bg-input);
+  border-color: var(--accent);
+}
+
+.input:focus {
+  outline: none;
+  background-color: var(--bg-input);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent);
+  animation: input-focus 0.3s ease;
+}
+
+.input::placeholder {
+  color: var(--text-muted2);
+}
+
+.highlight {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-orange);
+  transition: width 0.3s ease;
+}
+
+.input:focus + .highlight {
+  width: 100%;
+}
+
+@keyframes input-focus {
+  from {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.06);
+  }
+  to {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* =====================
+   Login Submit Button
+   ===================== */
+.lbutton {
+  display: inline-block;
+  background-color: var(--btn-lbutton-bg);
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  padding: 8px;
+  width: 80%;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.lbutton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.lbutton span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.lbutton:hover span {
+  padding-right: 16px;
+}
+
+.lbutton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* =====================
+   Accent Text
+   ===================== */
+.itex {
+  color: var(--accent-orange);
+}
+
+/* =====================
+   Footer
+   ===================== */
+.footer {
+  width: 100%;
+  height: 64px;
+  background-color: var(--bg-footer);
+  color: var(--text-footer);
+}
+
+footer {
+  margin-top: 24px;
+}
+
+.footer-inner {
+  justify-content: space-around;
+}
+
+.footer-links {
+  gap: 8px;
+}
+
+.footer p {
+  color: var(--text-footer);
+}
+
+/* =====================
+   Media — Tablet (max-width: 1200px)
+   ===================== */
+@media (max-width: 1200px) {
+  .login {
+    font-size: 13px;
+  }
+}
+
+/* =====================
+   Media — Smartphone (max-width: 768px)
+   ===================== */
+@media (max-width: 768px) {
+
+  .logo {
+    margin-left: 4px !important;
+  }
+
+  nav div ul li {
+    display: none !important;
+  }
+
+  nav div ul {
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    align-items: center !important;
+  }
+
+  .signup {
+    margin-right: 8px !important;
+  }
+
+  .signin {
+    margin-right: 4px !important;
+  }
+
+  .login {
+    width: 70px !important;
+    font-size: 12px !important;
+    padding: 7px 5px !important;
+  }
+
+  body {
+    min-height: 100dvh;
+  }
+
+  .card {
+    height: auto !important;
+    min-height: 520px !important;
+    width: calc(100% - 8px) !important;
+    max-width: 100%;
+    margin: 20px 4px 0 4px;
+    padding: 40px 24px 48px 24px !important;
+    box-sizing: border-box;
+  }
+
+  .card > div {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .form-wrapper {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .input {
+    font-size: 16px;
+  }
+
+  .lbutton {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    margin: 8px 0;
+  }
+
+}
+
+/* =====================
+   Media — Small phones (max-width: 480px)
+   ===================== */
+@media (max-width: 480px) {
+
+  .signup {
+    margin-right: 6px !important;
+  }
+
+  .signin {
+    margin-right: 3px !important;
+  }
+
+  .login {
+    width: 62px !important;
+    font-size: 11px !important;
+    padding: 6px 4px !important;
+  }
+
+  .card {
+    padding: 36px 20px 44px 20px !important;
+  }
+}

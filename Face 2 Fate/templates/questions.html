@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Interview Questions{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/questions.css') }}">
+{% endblock %}
+
+{% block nav_auth %}
+    <a href="/logout"><button class="login signup">Logout</button></a>
+{% endblock %}
+
+{% block content %}
+
+<div class="main-content">
+
+    <div class="features flex">
+        <h2 class="fancy">
+            <span class="text">Practice Interview Questions</span>
+        </h2>
+    </div>
+
+    <div class="questions-container">
+
+        <!-- Question 1 -->
+        <div class="card question-card">
+            <h2 class="question-title">1. Introduce Yourself</h2>
+            <div class="question-body">
+                <p>Give a short professional introduction about yourself.</p>
+                <a href="/upload-page?q_id=1">
+                    <button class="button">Start Recording</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="card question-card">
+            <h2 class="question-title">2. Why should we hire you?</h2>
+            <div class="question-body">
+                <p>Explain your strengths and what makes you suitable.</p>
+                <a href="/upload-page?q_id=2">
+                    <button class="button">Start Recording</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="card question-card">
+            <h2 class="question-title">3. Tell me about a challenge you faced</h2>
+            <div class="question-body">
+                <p>Describe a real situation and how you handled it.</p>
+                <a href="/upload-page?q_id=3">
+                    <button class="button">Start Recording</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

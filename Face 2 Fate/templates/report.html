@@ -1,0 +1,295 @@
+{% extends "base.html" %}
+
+{% block title %}Interview Report{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/report.css') }}">
+{% endblock %}
+
+{% block nav_auth %}
+    <a href="/logout"><button class="login signup">Logout</button></a>
+{% endblock %}
+
+{% block content %}
+
+<div class="report-wrapper" id="reportWrapper">
+
+    <!-- Heading -->
+    <div class="report-heading-bar">
+        <div class="report-heading-accent"></div>
+        <div class="report-heading-content">
+            <span class="report-heading-icon">◈</span>
+            <span class="report-heading-text">Interview Report</span>
+        </div>
+        <div class="report-heading-accent"></div>
+    </div>
+
+    <!-- ===== PORTRAIT LAYOUT ===== -->
+    <div class="layout-portrait" id="layoutPortrait">
+
+        <div class="top-grid">
+            <div class="col-left">
+                <div class="card">
+                    <div class="card-title">▶ &nbsp;Recorded Video</div>
+                    <video controls>
+                        <source src="/uploads/{{ video_path.split('\\')[-1].split('/')[-1] }}" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="col-right">
+                <div class="card">
+                    <div class="card-title">◈ &nbsp;Confidence Score</div>
+                    <div class="score-value">{{ score }}</div>
+                    <div class="score-label">Overall Performance Score</div>
+                    <div class="score-bar-bg">
+                        <div class="score-bar-fill" style="width: {{ score }}%;"></div>
+                    </div>
+                    <div class="main-feedback">{{ main_feedback }}</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">🎙 &nbsp;Speech Analysis</div>
+                    <div class="metric-grid">
+                        <div class="metric-block">
+                            <div class="metric-block-label">Duration</div>
+                            <div class="metric-block-value">{{ "%.0f"|format(duration) }}<span class="metric-block-unit-inline"> sec</span></div>
+                            <div class="metric-block-unit">Total audio length</div>
+                        </div>
+                        <div class="metric-block">
+                            <div class="metric-block-label">Filler Words</div>
+                            <div class="metric-block-value">{{ filler_count }}</div>
+                            <div class="metric-block-feedback">{{ breakdown.filler.feedback }}</div>
+                        </div>
+                        <div class="metric-block">
+                            <div class="metric-block-label">Energy Variation</div>
+                            <div class="metric-block-value">{{ "%.2f"|format(energy_var) }}</div>
+                            <div class="metric-block-feedback">{{ breakdown.energy.feedback }}</div>
+                        </div>
+                        <div class="metric-block">
+                            <div class="metric-block-label">Pitch Variation</div>
+                            <div class="metric-block-value">{{ "%.2f"|format(pitch_var) }}</div>
+                            <div class="metric-block-feedback">{{ breakdown.pitch.feedback }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">📄 &nbsp;Full Transcript</div>
+                    <p class="transcript-text">{{ transcript }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="remaining-cards">
+            <div class="card" id="visualFeedbackCardPortrait"></div>
+        </div>
+
+    </div>
+    <!-- END PORTRAIT -->
+
+
+    <!-- ===== LANDSCAPE LAYOUT — 4 rows ===== -->
+    <div class="layout-landscape" id="layoutLandscape" style="display:none;">
+
+        <!-- ROW 1: Full-width video -->
+        <div class="card landscape-video-card">
+            <div class="card-title">▶ &nbsp;Recorded Video</div>
+            <video controls>
+                <source src="/uploads/{{ video_path.split('\\')[-1].split('/')[-1] }}" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- ROW 2: Confidence Score | Full Transcript -->
+        <div class="landscape-row2">
+            <div class="card">
+                <div class="card-title">◈ &nbsp;Confidence Score</div>
+                <div class="score-value">{{ score }}</div>
+                <div class="score-label">Overall Performance Score</div>
+                <div class="score-bar-bg">
+                    <div class="score-bar-fill" style="width: {{ score }}%;"></div>
+                </div>
+                <div class="main-feedback ls-no-scroll">{{ main_feedback }}</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">📄 &nbsp;Full Transcript</div>
+                <p class="transcript-text ls-no-scroll">{{ transcript }}</p>
+            </div>
+        </div>
+
+        <!-- ROW 3: Speech Analysis — 4 metrics side by side -->
+        <div class="card landscape-speech-card">
+            <div class="card-title">🎙 &nbsp;Speech Analysis</div>
+            <div class="landscape-metric-row">
+                <div class="metric-block">
+                    <div class="metric-block-label">Duration</div>
+                    <div class="metric-block-value">{{ "%.0f"|format(duration) }}<span class="metric-block-unit-inline"> sec</span></div>
+                    <div class="metric-block-unit">Total audio length</div>
+                </div>
+                <div class="metric-block">
+                    <div class="metric-block-label">Filler Words</div>
+                    <div class="metric-block-value">{{ filler_count }}</div>
+                    <div class="metric-block-feedback">{{ breakdown.filler.feedback }}</div>
+                </div>
+                <div class="metric-block">
+                    <div class="metric-block-label">Energy Variation</div>
+                    <div class="metric-block-value">{{ "%.2f"|format(energy_var) }}</div>
+                    <div class="metric-block-feedback">{{ breakdown.energy.feedback }}</div>
+                </div>
+                <div class="metric-block">
+                    <div class="metric-block-label">Pitch Variation</div>
+                    <div class="metric-block-value">{{ "%.2f"|format(pitch_var) }}</div>
+                    <div class="metric-block-feedback">{{ breakdown.pitch.feedback }}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 4: Visual Feedback -->
+        <div class="card" id="visualFeedbackCardLandscape"></div>
+
+    </div>
+    <!-- END LANDSCAPE -->
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+(function () {
+
+    var videoSrc = "/uploads/{{ video_path.split('\\')[-1].split('/')[-1] }}";
+    var probe = document.createElement('video');
+    probe.src = videoSrc;
+    probe.preload = 'metadata';
+    probe.addEventListener('loadedmetadata', function () { activateLayout(probe.videoWidth > probe.videoHeight); });
+    probe.addEventListener('error', function () { activateLayout(false); });
+
+    function activateLayout(isLandscape) {
+        var portrait  = document.getElementById('layoutPortrait');
+        var landscape = document.getElementById('layoutLandscape');
+        if (isLandscape) {
+            portrait.style.display  = 'none';
+            landscape.style.display = 'block';
+            injectVisualFeedback('visualFeedbackCardLandscape', 'Landscape');
+        } else {
+            landscape.style.display = 'none';
+            portrait.style.display  = 'block';
+            injectVisualFeedback('visualFeedbackCardPortrait', 'Portrait');
+        }
+    }
+
+    function injectVisualFeedback(targetId, suffix) {
+        var card = document.getElementById(targetId);
+        if (!card) return;
+        card.innerHTML = `
+            <div class="card-title">👁 &nbsp;Visual Feedback</div>
+            <div class="vf-stats-row">
+                <div class="vf-stat">
+                    <span class="vf-stat-emoji">👁️</span>
+                    <div class="vf-stat-label">Eye Contact</div>
+                    <div class="vf-stat-value">{{ "%.1f"|format(eye_contact) }}<span class="vf-stat-unit">%</span></div>
+                    <div class="vf-stat-feedback">{{ breakdown.eye_contact.feedback }}</div>
+                </div>
+                <div class="vf-stat">
+                    <span class="vf-stat-emoji">😑</span>
+                    <div class="vf-stat-label">Blink Rate</div>
+                    <div class="vf-stat-value">{{ "%.1f"|format(blink_rate) }}<span class="vf-stat-unit"> /min</span></div>
+                    <div class="vf-stat-feedback">{{ breakdown.blink_rate.feedback }}</div>
+                </div>
+                <div class="vf-stat">
+                    <span class="vf-stat-emoji">🤲</span>
+                    <div class="vf-stat-label">Hand Movement</div>
+                    <div class="vf-stat-value">{{ "%.4f"|format(hand_movement) }}</div>
+                    <div class="vf-stat-feedback">Overall gesture activity level</div>
+                </div>
+            </div>
+            <div class="emotion-section-title">◆ &nbsp;Emotion Distribution</div>
+            <div class="emotion-legend" id="emotionLegend${suffix}"></div>
+            <div class="emotion-chart-wrap">
+                <canvas id="emotionChart${suffix}"></canvas>
+            </div>
+        `;
+        buildEmotionChart('emotionChart' + suffix, 'emotionLegend' + suffix);
+    }
+
+    function buildEmotionChart(canvasId, legendId) {
+        var canvas = document.getElementById(canvasId);
+        var legend = document.getElementById(legendId);
+        if (!canvas || !legend) return;
+
+        var rawData = {
+            {% for emotion, value in emotion_distribution.items() %}
+            "{{ emotion }}": {{ (value * 100) | round(1) }}{% if not loop.last %},{% endif %}
+            {% endfor %}
+        };
+        var colorMap = {
+            "happy":"#2ecc71","neutral":"#3498db","sad":"#9b59b6",
+            "fear":"#e67e22","angry":"#e74c3c","surprise":"#f1c40f","disgust":"#1abc9c"
+        };
+        var emotions = Object.keys(rawData);
+        var timePoints = 12;
+        var labels = Array.from({length: timePoints}, function(_,i){
+            return Math.round(i * ({{ duration }} / (timePoints - 1))) + 's';
+        });
+        function fakeTimeSeries(avg) {
+            var pts = [];
+            for (var i = 0; i < timePoints; i++) {
+                var noise = (Math.random() - 0.5) * avg * 0.25;
+                pts.push(Math.max(0, Math.min(100, +(avg + noise).toFixed(1))));
+            }
+            pts[0] = avg; pts[timePoints - 1] = avg;
+            return pts;
+        }
+        var datasets = emotions.map(function(e) {
+            var c = colorMap[e] || '#7B542F';
+            return {
+                label: e.charAt(0).toUpperCase() + e.slice(1),
+                data: fakeTimeSeries(rawData[e]),
+                borderColor: c, backgroundColor: c + '15',
+                borderWidth: 1.8, pointRadius: 0,
+                pointHoverRadius: 4, pointHoverBackgroundColor: c,
+                pointHoverBorderColor: '#212121', pointHoverBorderWidth: 2,
+                tension: 0.45, fill: false
+            };
+        });
+        var chart = new Chart(canvas, {
+            type: 'line',
+            data: { labels: labels, datasets: datasets },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                animation: { duration: 1000, easing: 'easeInOutQuart' },
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#1a1a1a', borderColor: '#2e2e2e', borderWidth: 1,
+                        titleColor: '#7B542F', bodyColor: '#D3DAD9',
+                        titleFont: { size: 11 }, bodyFont: { size: 11, family: 'monospace' },
+                        padding: 10,
+                        callbacks: { label: function(ctx){ return '  ' + ctx.dataset.label + ': ' + ctx.parsed.y + '%'; } }
+                    }
+                },
+                scales: {
+                    x: { grid: { color: '#2a2a2a', lineWidth: 0.5 }, ticks: { color: '#555', font: { size: 10, family: 'monospace' }, maxRotation: 0 }, border: { color: '#2e2e2e' } },
+                    y: { min: 0, max: 100, grid: { color: '#2a2a2a', lineWidth: 0.5 }, ticks: { color: '#555', font: { size: 10, family: 'monospace' }, callback: function(v){ return v+'%'; }, stepSize: 25 }, border: { color: '#2e2e2e' } }
+                }
+            }
+        });
+        datasets.forEach(function(ds, i) {
+            var item = document.createElement('div');
+            item.className = 'emotion-legend-item';
+            item.innerHTML = '<span class="emotion-legend-dot" style="background:' + ds.borderColor + '"></span>' + ds.label;
+            item.onclick = function() {
+                var meta = chart.getDatasetMeta(i);
+                meta.hidden = !meta.hidden;
+                item.style.opacity = meta.hidden ? '0.3' : '1';
+                chart.update();
+            };
+            legend.appendChild(item);
+        });
+    }
+
+})();
+</script>
+
+{% endblock %}

@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block title %}Terms of Service — Face 2 Fate{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/legal.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="legal-wrapper">
+
+    <!-- Hero Bar -->
+    <div class="legal-hero">
+        <div class="legal-hero-tag">◈ LEGAL</div>
+        <h1 class="legal-hero-title">Terms of Service</h1>
+        <p class="legal-hero-sub">Last updated: <span class="legal-date">March 30, 2026</span></p>
+        <div class="legal-hero-line"></div>
+    </div>
+
+    <!-- Intro Banner -->
+    <div class="legal-intro-card">
+        <div class="legal-intro-icon">⚡</div>
+        <p class="legal-intro-text">
+            By accessing or using <strong>Face 2 Fate</strong>, you agree to be bound by these Terms of Service.
+            Please read them carefully before proceeding. If you do not agree, you must not use this platform.
+        </p>
+    </div>
+
+    <!-- Navigation Sidebar + Content -->
+    <div class="legal-layout">
+
+        <!-- Sticky ToC -->
+        <aside class="legal-toc">
+            <div class="legal-toc-title">◆ &nbsp;Contents</div>
+            <nav>
+                <a href="#acceptance"  class="legal-toc-link">01 — Acceptance</a>
+                <a href="#eligibility" class="legal-toc-link">02 — Eligibility</a>
+                <a href="#account"     class="legal-toc-link">03 — Your Account</a>
+                <a href="#use"         class="legal-toc-link">04 — Permitted Use</a>
+                <a href="#data"        class="legal-toc-link">05 — Data & Analysis</a>
+                <a href="#ip"          class="legal-toc-link">06 — Intellectual Property</a>
+                <a href="#disclaimer"  class="legal-toc-link">07 — Disclaimer</a>
+                <a href="#limitation"  class="legal-toc-link">08 — Limitation of Liability</a>
+                <a href="#termination" class="legal-toc-link">09 — Termination</a>
+                <a href="#changes"     class="legal-toc-link">10 — Changes to Terms</a>
+                <a href="#contact-t"   class="legal-toc-link">11 — Contact</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="legal-content">
+
+            <section id="acceptance" class="legal-section">
+                <div class="legal-section-num">01</div>
+                <h2 class="legal-section-title">Acceptance of Terms</h2>
+                <p>These Terms of Service ("Terms") constitute a legally binding agreement between you ("User") and Face 2 Fate ("Platform," "we," "us," or "our"). By creating an account, uploading any content, or using any feature of our platform, you acknowledge that you have read, understood, and agree to be bound by these Terms and our Privacy Policy.</p>
+                <p>If you are using the platform on behalf of an organisation, you represent and warrant that you have the authority to bind that organisation to these Terms.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="eligibility" class="legal-section">
+                <div class="legal-section-num">02</div>
+                <h2 class="legal-section-title">Eligibility</h2>
+                <p>You must be at least <strong>13 years of age</strong> to use Face 2 Fate. By using this platform, you represent and warrant that you meet this age requirement. If you are under the age of majority in your jurisdiction, you may only use the platform with the consent of a parent or legal guardian.</p>
+                <p>We reserve the right to refuse access to anyone for any reason at any time.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="account" class="legal-section">
+                <div class="legal-section-num">03</div>
+                <h2 class="legal-section-title">Your Account</h2>
+                <p>When you register for an account, you agree to provide accurate, current, and complete information. You are responsible for:</p>
+                <ul class="legal-list">
+                    <li>Maintaining the confidentiality of your account credentials.</li>
+                    <li>All activities that occur under your account.</li>
+                    <li>Notifying us immediately of any unauthorised use of your account.</li>
+                    <li>Ensuring your password is kept secure and not shared with third parties.</li>
+                </ul>
+                <p>We cannot and will not be liable for any loss or damage arising from your failure to comply with these obligations.</p>
+
+                <div class="legal-callout legal-callout--warn">
+                    <span class="legal-callout-icon">⚠</span>
+                    <span>Sharing your account credentials with others is strictly prohibited and may result in immediate account termination.</span>
+                </div>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="use" class="legal-section">
+                <div class="legal-section-num">04</div>
+                <h2 class="legal-section-title">Permitted Use</h2>
+                <p>Face 2 Fate is provided solely for personal interview preparation and self-improvement purposes. You agree <strong>not</strong> to:</p>
+                <ul class="legal-list">
+                    <li>Use the platform for any unlawful purpose or in violation of any regulations.</li>
+                    <li>Upload content that contains malicious code, viruses, or harmful data.</li>
+                    <li>Attempt to reverse-engineer, decompile, or extract source code from the platform.</li>
+                    <li>Circumvent any security, authentication, or access control mechanisms.</li>
+                    <li>Scrape, harvest, or collect data from the platform in an automated manner.</li>
+                    <li>Use another person's likeness or video without their explicit consent.</li>
+                    <li>Misrepresent your identity or impersonate any person or entity.</li>
+                    <li>Upload videos containing third-party copyrighted material without proper authorisation.</li>
+                </ul>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="data" class="legal-section">
+                <div class="legal-section-num">05</div>
+                <h2 class="legal-section-title">Data & Analysis</h2>
+                <p>When you upload a video to Face 2 Fate, our platform processes it through several AI-powered analysis pipelines, including:</p>
+                <ul class="legal-list">
+                    <li><strong>Video Analysis</strong> — facial landmark detection, eye contact, blink rate, emotion recognition, and hand movement tracking.</li>
+                    <li><strong>Audio Analysis</strong> — pitch variation, energy variation, and speech duration.</li>
+                    <li><strong>Text Analysis</strong> — speech transcription and filler word detection via AI transcription services.</li>
+                </ul>
+                <p>You retain ownership of all video content you upload. By uploading content, you grant Face 2 Fate a limited, non-exclusive, royalty-free licence to process and analyse your content solely for the purpose of providing the service to you.</p>
+                <p>Analysis results, including confidence scores and feedback, are generated by automated systems and are intended as <em>guidance only</em>. They do not constitute professional career, psychological, or medical advice.</p>
+
+                <div class="legal-callout legal-callout--info">
+                    <span class="legal-callout-icon">ℹ</span>
+                    <span>AI-generated feedback scores are probabilistic estimates and should not be treated as definitive assessments of your interview performance or personal attributes.</span>
+                </div>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="ip" class="legal-section">
+                <div class="legal-section-num">06</div>
+                <h2 class="legal-section-title">Intellectual Property</h2>
+                <p>All technology, source code, design, trademarks, logos, and content comprising the Face 2 Fate platform (excluding user-uploaded content) are the exclusive intellectual property of Face 2 Fate and its licensors. Nothing in these Terms grants you any right to use our trademarks, logos, or proprietary materials without our prior written consent.</p>
+                <p>You may not reproduce, distribute, or create derivative works based on our platform or its content without explicit written permission.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="disclaimer" class="legal-section">
+                <div class="legal-section-num">07</div>
+                <h2 class="legal-section-title">Disclaimer of Warranties</h2>
+                <p>The platform is provided <strong>"as is"</strong> and <strong>"as available"</strong> without warranties of any kind, either express or implied. We do not warrant that:</p>
+                <ul class="legal-list">
+                    <li>The platform will be uninterrupted, error-free, or fully secure.</li>
+                    <li>Any analysis results will be accurate, complete, or suitable for any particular purpose.</li>
+                    <li>Defects or errors will be corrected in a timely manner.</li>
+                </ul>
+                <p>Your use of the platform is entirely at your own risk.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="limitation" class="legal-section">
+                <div class="legal-section-num">08</div>
+                <h2 class="legal-section-title">Limitation of Liability</h2>
+                <p>To the maximum extent permitted by applicable law, Face 2 Fate and its developers, affiliates, and licensors shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of data, revenue, or profits, arising out of or in connection with your use of the platform, even if we have been advised of the possibility of such damages.</p>
+                <p>Our total liability to you for any claims arising under these Terms shall not exceed the amount you paid to us in the twelve (12) months preceding the claim, or INR 100, whichever is greater.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="termination" class="legal-section">
+                <div class="legal-section-num">09</div>
+                <h2 class="legal-section-title">Termination</h2>
+                <p>We reserve the right to suspend or terminate your account and access to the platform at our sole discretion, without notice, for conduct that we believe violates these Terms or is harmful to other users, us, third parties, or the integrity of the platform.</p>
+                <p>Upon termination, your right to use the platform ceases immediately. All provisions of these Terms that by their nature should survive termination shall survive, including ownership provisions, warranty disclaimers, and limitations of liability.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="changes" class="legal-section">
+                <div class="legal-section-num">10</div>
+                <h2 class="legal-section-title">Changes to Terms</h2>
+                <p>We reserve the right to modify these Terms at any time. We will notify users of significant changes by updating the "Last updated" date at the top of this page. Your continued use of the platform after any such changes constitutes your acceptance of the new Terms.</p>
+                <p>We encourage you to review these Terms periodically to stay informed of any updates.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="contact-t" class="legal-section">
+                <div class="legal-section-num">11</div>
+                <h2 class="legal-section-title">Contact</h2>
+                <p>If you have any questions about these Terms of Service, please reach out to us:</p>
+                <div class="legal-contact-grid">
+                    <div class="legal-contact-item">
+                        <span class="legal-contact-label">Platform</span>
+                        <span class="legal-contact-value">Face 2 Fate</span>
+                    </div>
+                    <div class="legal-contact-item">
+                        <span class="legal-contact-label">Email</span>
+                        <span class="legal-contact-value">support@face2fate.com</span>
+                    </div>
+                    <div class="legal-contact-item">
+                        <span class="legal-contact-label">Response Time</span>
+                        <span class="legal-contact-value">Within 5 business days</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer CTA -->
+            <div class="legal-footer-cta">
+                <p>Also read our</p>
+                <a href="/privacy" class="legal-link-btn">Privacy Policy →</a>
+            </div>
+
+        </main>
+    </div>
+
+</div>
+
+{% endblock %}

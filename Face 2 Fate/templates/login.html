@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="flex" style="flex: 1;">
+    <div class="card" style="height: 600px; width: 400px; padding: 0;">
+        <div style="color: #e8e8e8; text-align: center; width: 300px;">
+            <h1>Face 2 Fate</h1>
+            <h2>Login</h2>
+
+            <form action="/login-user" method="POST">
+                <div class="form-wrapper">
+                    <div class="input-container">
+                        <input class="input" type="email" name="email" placeholder="Email" required>
+                        <span class="highlight"></span>
+                    </div>
+                    <div class="input-container">
+                        <input class="input" type="password" name="password" placeholder="Password" required>
+                        <span class="highlight"></span>
+                    </div>
+                </div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% set msg = messages[0] %}
+                <p style="
+                        color: {% if 'updated' in msg.lower() %}#2ecc71{% else %}#e74c3c{% endif %};
+                        font-size: 16px;
+                        text-align: center;
+                        margin-bottom: 8px;
+                    ">{{ msg }}</p>
+                {% endif %}
+                {% endwith %}
+                <button class="lbutton" type="submit"><span>Login</span></button>
+            </form>
+
+            <p style="margin-top:10px;">
+                <a class="itex" href="/reset-password">Forgot Password?</a>
+            </p>
+            <p>Don't have account?
+                <a class="itex" href="/signup">Signup</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

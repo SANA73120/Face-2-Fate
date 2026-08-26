@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Interview Video{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">
+{% endblock %}
+
+{% block nav_auth %}
+    <a href="/logout"><button class="login signup">Logout</button></a>
+{% endblock %}
+
+{% block content %}
+
+<div class="page-wrapper">
+
+    <div class="features flex features-heading">
+        <h2 class="fancy">
+            <span class="text">Upload Your Interview Response</span>
+        </h2>
+    </div>
+
+    <div class="card-wrapper">
+        <div class="card upload-card">
+            <div>
+                <h3>Question ID: {{ q_id }}</h3>
+            </div>
+
+            <form id="uploadForm" enctype="multipart/form-data">
+                <input type="hidden" name="q_id" value="{{ q_id }}">
+
+                <div class="upload-row">
+                    <label class="upload">
+                        <span class="upload-inner">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                            <span class="text">Choose File</span>
+                        </span>
+                        <input type="file" id="videoInput" name="video" accept="video/*" required hidden>
+                    </label>
+                    <span id="fileName" class="file-name">No file selected</span>
+                </div>
+
+                <br>
+
+                <div class="btn-row">
+                    <button class="button" type="submit">Upload &amp; Analyze</button>
+                    <span id="status-btn"></span>
+                    <span id="status-msg"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- HISTORY TABLE -->
+    <h3 class="attempts-heading">Past Attempts</h3>
+
+    <div class="table-scroll">
+        <table class="attempts-table" border="1">
+            <tr>
+                <th>Video ID</th>
+                <th>Report</th>
+                <th>Delete</th>
+            </tr>
+            {% for h in history %}
+            <tr>
+                <td>{{ '%06d' % h[0] }}</td>
+                <td>
+                    {% if h[2] == 'done' %}
+                        <a href="/report/{{ h[0] }}">
+                            <button class="view">View</button>
+                        </a>
+                    {% else %}
+                        <span class="processing-tag">Processing...</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="/delete/{{ h[0] }}">
+                        <button class="view delete-btn">Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+
+<script>
+    // ===== FILE NAME DISPLAY =====
+    const input = document.getElementById("videoInput");
+    const fileNameSpan = document.getElementById("fileName");
+
+    input.addEventListener("change", function () {
+        fileNameSpan.textContent = this.files.length > 0 ? this.files[0].name : "No file selected";
+    });
+
+    // ===== UPLOAD + POLLING =====
+    let pollingInterval = null;
+
+    document.getElementById("uploadForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const statusMsg = document.getElementById("status-msg");
+        const statusBtn = document.getElementById("status-btn");
+
+        statusMsg.innerHTML = `<span class="status-processing"><span class="spinner"></span>Uploading video...</span>`;
+        statusBtn.innerHTML = "";
+
+        const response = await fetch("/upload", { method: "POST", body: formData });
+        const result = await response.json();
+        const v_id = result.v_id;
+
+        statusMsg.innerHTML = `<span class="status-processing"><span class="spinner"></span>Processing your video...</span>`;
+
+        pollingInterval = setInterval(async () => {
+            const res = await fetch(`/status/${v_id}`);
+            const data = await res.json();
+
+            if (data.status === "done") {
+                clearInterval(pollingInterval);
+                statusMsg.innerHTML = `<span class="status-done">✅ Processing complete!</span>`;
+                statusBtn.innerHTML = `<a class="view-report-btn" href="/report/${v_id}">View Report</a>`;
+            }
+        }, 3000);
+    });
+</script>
+
+{% endblock %}

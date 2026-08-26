@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Signup{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="flex" style="flex: 1;">
+    <div class="card" style="height: 600px; width: 400px; padding: 0;">
+        <div style="color: #e8e8e8; text-align: center; width: 300px;">
+            <h1>Face 2 Fate</h1>
+            <h2>Signup</h2>
+
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <p style="color: var(--accent-orange); font-size: 0.9em; margin-bottom: 8px;">{{ message }}</p>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <form action="/register-user" method="POST">
+                <div class="form-wrapper">
+                    <div class="input-container">
+                        <input class="input" type="text" name="username" placeholder="Name" required>
+                        <span class="highlight"></span>
+                    </div>
+                    <div class="input-container">
+                        <input class="input" type="email" name="email" placeholder="Email" required>
+                        <span class="highlight"></span>
+                    </div>
+                    <div class="input-container">
+                        <input class="input" type="password" name="password" placeholder="Password" required>
+                        <span class="highlight"></span>
+                    </div>
+                </div>
+                <button class="lbutton" type="submit"><span>Create Account</span></button>
+            </form>
+
+            <p>Already have account?
+                <a class="itex" href="/login">Login</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Face 2 Fate{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block navbar_extra_class %}navbar--fixed{% endblock %}
+
+{% block content %}
+
+<div class="flex" id="Home">
+    <div class="card hero">
+        <div class="content">
+            <p class="heading">Face 2 Fate</p>
+            <p class="para">
+                Our AI Interview Coach helps you master interviews by analyzing your answers,
+                voice tone, and emotions in real time. It identifies confidence levels,
+                hesitation, stress, and clarity in your responses.
+            </p>
+            <div class="cta-wrapper">
+                <a href="{% if logged_in %}/questions{% else %}/signup{% endif %}">
+                    <button class="cta">
+                        <span class="spans">{% if logged_in %}Dashboard{% else %}Get Started{% endif %}</span>
+                        <span class="second">
+                            <svg width="50px" height="20px" viewBox="0 0 66 43">
+                                <g fill="#FFFFFF">
+                                    <path class="one" d="M40.15 3.89L43.97 0.13L65.69 20.78L44.67 42.86L40.15 39.10L56.99 21.85L40.15 4.60Z"></path>
+                                    <path class="two" d="M20.15 3.89L23.97 0.13L45.69 20.78L24.67 42.86L20.15 39.10L36.99 21.85L20.15 4.60Z"></path>
+                                    <path class="three" d="M0.15 3.89L3.97 0.13L25.69 20.78L4.67 42.86L0.15 39.10L16.99 21.85L0.15 4.60Z"></path>
+                                </g>
+                            </svg>
+                        </span>
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div>
+            <img class="face" src="{{ url_for('static', filename='images/main.svg') }}" alt="F2F">
+        </div>
+    </div>
+</div>
+
+<div id="features"></div>
+
+<div class="features flex features-header">
+    <h2 class="fancy">
+        <span class="text">Powerful Features for Interview Mastery</span>
+    </h2>
+</div>
+
+<div class="flex features-grid">
+    <div class="feat">
+        <i>
+            <img class="feat-icon" src="{{ url_for('static', filename='images/artificial-intelligence.png') }}">
+            <h3>Real-Time Emotion & Gaze Analysis</h3>
+            <p>Tracks 8 facial emotions, eye contact %, head pose, iris position, and blink rate frame-by-frame using HSEmotion.</p>
+        </i>
+    </div>
+    <div class="feat">
+        <i>
+            <img class="feat-icon" src="{{ url_for('static', filename='images/natural-language-processing.png') }}">
+            <h3>Filler Word & Transcript Analysis</h3>
+            <p>Verbatim Whisper transcription with timestamped detection of fillers like "um", "uh", "like", and "you know".</p>
+        </i>
+    </div>
+    <div class="feat">
+        <i>
+            <img class="feat-icon" src="{{ url_for('static', filename='images/ai-microphone.png') }}">
+            <h3>Voice Pitch & Energy Profiling</h3>
+            <p>Measures pitch variation via YIN and RMS energy dynamics to flag monotone delivery or erratic vocal patterns.</p>
+        </i>
+    </div>
+    <div class="feat">
+        <i>
+            <img class="feat-icon" src="{{ url_for('static', filename='images/growth.png') }}">
+            <h3>Weighted Confidence Score & AI Feedback</h3>
+            <p>Scores eye contact, blink rate, fillers, emotion, and hand movement — with LLaMA-generated coaching feedback.</p>
+        </i>
+    </div>
+</div>
+
+<div class="features flex features-header">
+    <h2 class="fancy">
+        <span class="text">See it in Action</span>
+    </h2>
+</div>
+
+<div class="flex" id="Demo">
+    <div class="video">
+        <video width="1080" autoplay muted loop>
+            <source media="(max-width: 768px)" src="{{ url_for('static', filename='images/AiS.mp4') }}">
+            <source src="{{ url_for('static', filename='images/Ai.mp4') }}">
+        </video>
+    </div>
+</div>
+
+{% endblock %}

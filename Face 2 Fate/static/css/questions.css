@@ -1,0 +1,562 @@
+/* ============================================================
+   questions.css  —  Interview Questions Page  |  Face 2 Fate
+   Theme-aware: uses CSS variables from theme.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..900;1,9..40,100..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');family=Noto+Sans:ital,wght@0,100..900;1,100..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');family=Roboto:ital,wght@0,100..900;1,100..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');family=Rubik:ital,wght@0,300..900;1,300..900@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');display=swap');
+
+body {
+  background-color: var(--bg-page);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  color: var(--text-body);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+p {
+  font-family: "DM Sans", sans-serif;
+  color: var(--text-body);
+}
+
+h2 {
+  font-family: "DM Sans", sans-serif;
+  color: var(--text-heading);
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* =====================
+   Navbar
+   ===================== */
+.navbar {
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-nav);
+}
+
+nav div ul li {
+  list-style: none;
+  display: none;
+  margin-right: 22px;
+  font-style: italic;
+}
+
+.signup {
+  margin-right: 48px;
+}
+
+.logo {
+  margin-left: 86px;
+}
+
+.Brutal {
+  background-color: var(--bg-nav);
+  height: 54px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid var(--border-nav);
+  padding-right: 8px;
+}
+
+.Brutal:before {
+  content: "";
+  width: 4px;
+  height: 28px;
+  background: var(--brutal-pseudo-bg);
+  border: 2px solid var(--border-nav);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  position: absolute;
+  border-top: 0;
+  border-left: 0;
+  border-bottom: 0;
+  bottom: -7px;
+  left: 4px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.Brutal:after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  bottom: -2px;
+}
+
+/* =====================
+   Login Button
+   ===================== */
+.login {
+  background: var(--btn-login-bg);
+  color: var(--btn-login-text);
+  border: none;
+  padding: 10px 20px;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 600;
+  width: 120px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skew(-21deg);
+  position: relative;
+}
+
+.login::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  left: 0;
+  background: var(--accent-login-bg);
+  opacity: 0;
+  z-index: -1;
+  transition: all 0.5s;
+}
+
+.login:hover {
+  color: var(--btn-login-hover-text);
+}
+
+.login:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+/* =====================
+   Underline Link
+   ===================== */
+.underline {
+  color: var(--text-nav);
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+.underline:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: var(--text-nav);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.underline:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+/* =====================
+   Card
+   ===================== */
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  padding: 32px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 2px solid var(--border-card);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  margin-top: 16px;
+  height: 600px;
+  width: 85%;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 40%, transparent);
+  border-color: var(--accent);
+}
+
+/* =====================
+   Question Cards
+   ===================== */
+.question-card {
+  color: var(--text-body);
+  display: block;
+  height: auto;
+  width: 95%;
+  padding: 20px;
+  margin: 15px auto;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.question-title {
+  margin-top: 6px;
+  margin-bottom: 0;
+  color: var(--text-primary);
+}
+
+.question-body {
+  margin-left: 24px;
+}
+
+.question-body p {
+  color: var(--text-muted);
+}
+
+/* =====================
+   Features Section
+   ===================== */
+.features {
+  margin-top: 32px;
+  margin-right: 104px;
+}
+
+.questions-container {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.fancy {
+  background-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0;
+  margin-left: 6%;
+  padding: 1.25em 2em;
+  position: relative;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.fancy::before {
+  content: " ";
+  width: 1.5625rem;
+  height: 2px;
+  background: var(--fancy-line);
+  top: 50%;
+  left: 1.5em;
+  position: absolute;
+  transform: translateY(-50%);
+  transform-origin: center;
+  transition: background 0.3s linear, width 0.3s linear;
+}
+
+.fancy .text {
+  font-size: 2em;
+  line-height: 1.33333em;
+  padding-left: 2em;
+  display: block;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-heading);
+}
+
+.fancy .top-key {
+  height: 2px;
+  width: 1.5625rem;
+  top: -2px;
+  left: 0.625rem;
+  position: absolute;
+  background: var(--bg-page);
+  transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.fancy .bottom-key-1 {
+  height: 2px;
+  width: 1.5625rem;
+  right: 1.875rem;
+  bottom: -2px;
+  position: absolute;
+  background: var(--bg-page);
+  transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy:hover {
+  color: var(--text-heading);
+}
+
+.fancy:hover::before {
+  width: 0.9375rem;
+  background: var(--fancy-line);
+}
+
+.fancy:hover .text {
+  color: var(--text-heading);
+  padding-left: 1.5em;
+}
+
+.fancy:hover .top-key {
+  left: -2px;
+  width: 0px;
+}
+
+.fancy:hover .bottom-key-1,
+.fancy:hover .bottom-key-2 {
+  right: 0;
+  width: 0;
+}
+
+/* =====================
+   Button
+   ===================== */
+.button {
+  background-color: var(--bg-metric);
+  color: var(--text-body);
+  padding: 12px 24px;
+  border: 1px solid var(--border-card);
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 17px;
+  font-family: "DM Sans", sans-serif;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: none;
+}
+
+.button:active {
+  transform: translateY(0.5em);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* =====================
+   Footer
+   ===================== */
+.footer {
+  width: 100%;
+  height: 64px;
+  background-color: var(--bg-footer);
+  color: var(--text-footer);
+}
+
+footer {
+  margin-top: 24px;
+}
+
+.footer-inner {
+  justify-content: space-around;
+}
+
+.footer-links {
+  gap: 8px;
+}
+
+.footer p {
+  color: var(--text-footer);
+}
+
+/* =====================
+   Base layout
+   ===================== */
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.logo-img {
+  height: 46px;
+}
+
+/* =====================
+   Media — Tablet (max-width: 1200px)
+   ===================== */
+@media (max-width: 1200px) {
+  .fancy .text {
+    font-size: 1.1em;
+  }
+
+  .fancy {
+    margin-right: 0;
+  }
+}
+
+/* =====================
+   Media — Smartphone (max-width: 768px)
+   ===================== */
+@media (max-width: 768px) {
+
+  .logo {
+    margin-left: 4px !important;
+  }
+
+  nav div ul li {
+    display: none !important;
+  }
+
+  nav div ul {
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    align-items: center !important;
+  }
+
+  .signup {
+    margin-right: 8px !important;
+  }
+
+  .signin {
+    margin-right: 4px !important;
+  }
+
+  .login {
+    width: 70px !important;
+    font-size: 12px !important;
+    padding: 7px 5px !important;
+  }
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    min-height: 100%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-content {
+    flex: 1;
+  }
+
+  .fancy {
+    pointer-events: none;
+    margin-left: 0;
+    padding: 1em 1em;
+    width: 100%;
+    text-align: center;
+  }
+
+  .fancy .text {
+    transition: none;
+    padding-left: 0 !important;
+    font-size: 0.95em;
+    text-align: center;
+  }
+
+  .fancy::before {
+    transition: none;
+    display: none;
+  }
+
+  .features {
+    margin-right: 0;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 4px;
+  }
+
+  .questions-container {
+    width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .question-card {
+    height: auto;
+    width: 100%;
+    margin: 12px 0;
+    padding: 28px 22px;
+    box-sizing: border-box;
+  }
+
+  .question-title {
+    font-size: 19px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .question-body {
+    margin-left: 0;
+  }
+
+  .question-body p {
+    font-size: 14px;
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }
+
+  .button {
+    font-size: 14px;
+    padding: 9px 18px;
+  }
+
+}
+
+/* =====================
+   Media — Small phones (max-width: 480px)
+   ===================== */
+@media (max-width: 480px) {
+
+  .fancy .text {
+    font-size: 0.8em;
+  }
+
+  .question-title {
+    font-size: 14px;
+  }
+
+  .question-body p {
+    font-size: 12px;
+  }
+
+  .signup {
+    margin-right: 6px !important;
+  }
+
+  .signin {
+    margin-right: 3px !important;
+  }
+
+  .login {
+    width: 62px !important;
+    font-size: 11px !important;
+    padding: 6px 4px !important;
+  }
+
+  .button {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+}

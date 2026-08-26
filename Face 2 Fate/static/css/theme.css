@@ -1,0 +1,242 @@
+/* ============================================================
+   theme.css — Face 2 Fate  |  Dark / Light Theme Variables
+   Include this FIRST, before any page CSS.
+   ============================================================ */
+
+/* =====================
+   DARK THEME (default)
+   ===================== */
+:root,
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-page:          #212121;
+  --bg-nav:           #37353E;
+  --bg-card:          #212121;
+  --bg-input:         #37353E;
+  --bg-footer:        #4b4b4b;
+  --bg-metric:        #1a1a1a;
+  --bg-metric-border: #2a2a2a;
+  --bg-feat:          #333;
+  --bg-feat-inner:    #222222;
+  --bg-table-head:    #2d2d2d;
+  --bg-cta:           #44444E;
+
+  /* Text */
+  --text-primary:     #e8e8e8;
+  --text-body:        #D3DAD9;
+  --text-muted:       #999;
+  --text-muted2:      #777;
+  --text-muted3:      #555;
+  --text-footer:      #D3DAD9;
+  --text-nav:         #D3DAD9;
+  --text-heading:     #D3DAD9;
+  --text-transcript:  #999;
+
+  /* Borders */
+  --border-card:      #313131;
+  --border-nav:       black;
+  --border-table:     #444;
+  --border-card-div:  #2e2e2e;
+  --border-metric:    #2a2a2a;
+
+  /* Accent */
+  --accent:           #7B542F;
+  --accent-hover-glow:#7B542F;
+  --accent-login-bg:  #715A5A;
+  --accent-score:     #2ecc71;
+  --accent-orange:    orange;
+
+  /* Login / Nav button */
+  --btn-login-bg:     #D3DAD9;
+  --btn-login-text:   #37353E;
+  --btn-login-hover-text: #D3DAD9;
+
+  /* Auth form button */
+  --btn-lbutton-bg:   #3d405b;
+
+  /* Score bar */
+  --score-bar-bg:     #2a2a2a;
+
+  /* Pseudo elements */
+  --brutal-pseudo-bg: #212121;
+
+  /* Fancy heading line */
+  --fancy-line:       #D3DAD9;
+
+  /* Feature card inner bg */
+  --feat-inner-bg:    #222222;
+
+  /* View/delete button */
+  --view-border:      #7B542F;
+  --delete-border:    #7D8082;
+
+  /* Toggle button */
+  --toggle-bg:        #37353E;
+  --toggle-icon:      #D3DAD9;
+  --toggle-border:    #555;
+
+  /* Video section border */
+  --video-border:     #D3DAD9;
+}
+
+/* =====================
+   LIGHT THEME
+   ===================== */
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-page:          #F5F3EE;
+  --bg-nav:           #FFFFFF;
+  --bg-card:          #FFFFFF;
+  --bg-input:         #EEE9E2;
+  --bg-footer:        #2C2C2A;
+  --bg-metric:        #F5F3EE;
+  --bg-metric-border: #E0DBD3;
+  --bg-feat:          #FFFFFF;
+  --bg-feat-inner:    #F9F7F4;
+  --bg-table-head:    #EEE9E2;
+  --bg-cta:           #3C3434;
+
+  /* Text */
+  --text-primary:     #1C1917;
+  --text-body:        #292524;
+  --text-muted:       #6B6560;
+  --text-muted2:      #857F79;
+  --text-muted3:      #A39D96;
+  --text-footer:      #E5E2DC;
+  --text-nav:         #292524;
+  --text-heading:     #292524;
+  --text-transcript:  #6B6560;
+
+  /* Borders */
+  --border-card:      #DDD8D0;
+  --border-nav:       #DDD8D0;
+  --border-table:     #DDD8D0;
+  --border-card-div:  #E5E2DC;
+  --border-metric:    #E0DBD3;
+
+  /* Accent — warm amber-brown works in both */
+  --accent:           #9B6B3A;
+  --accent-hover-glow:#C28A50;
+  --accent-login-bg:  #8C6A50;
+  --accent-score:     #1D9E75;
+  --accent-orange:    #D97706;
+
+  /* Login / Nav button */
+  --btn-login-bg:     #292524;
+  --btn-login-text:   #F5F3EE;
+  --btn-login-hover-text: #F5F3EE;
+
+  /* Auth form button */
+  --btn-lbutton-bg:   #4A4760;
+
+  /* Score bar */
+  --score-bar-bg:     #E0DBD3;
+
+  /* Pseudo elements */
+  --brutal-pseudo-bg: #F5F3EE;
+
+  /* Fancy heading line */
+  --fancy-line:       #292524;
+
+  /* Feature card inner bg */
+  --feat-inner-bg:    #F9F7F4;
+
+  /* View/delete button */
+  --view-border:      #9B6B3A;
+  --delete-border:    #A39D96;
+
+  /* Toggle button */
+  --toggle-bg:        #FFFFFF;
+  --toggle-icon:      #292524;
+  --toggle-border:    #DDD8D0;
+
+  /* Video section border */
+  --video-border:     #9B6B3A;
+}
+
+/* =====================
+   THEME TOGGLE BUTTON
+   Inject this button into every page via JS (see toggle.js)
+   ===================== */
+#theme-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 99999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--toggle-border);
+  background: var(--toggle-bg);
+  color: var(--toggle-icon);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transition: background 0.3s, border-color 0.3s, color 0.3s, transform 0.2s;
+  font-size: 20px;
+  line-height: 1;
+  padding: 0;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+  border-color: var(--accent);
+}
+
+#theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* =====================
+   MOBILE: lift toggle above footer
+   ===================== */
+@media (max-width: 768px) {
+  #theme-toggle {
+    bottom: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+  }
+}
+
+/* =====================
+   LOGO THEME SWITCHING
+   ===================== */
+
+/* Dark theme: show dark logo, hide light logo */
+:root .logo-dark,
+[data-theme="dark"] .logo-dark {
+  display: block;
+}
+
+:root .logo-light,
+[data-theme="dark"] .logo-light {
+  display: none;
+}
+
+/* Light theme: show light logo, hide dark logo */
+[data-theme="light"] .logo-dark {
+  display: none;
+}
+
+[data-theme="light"] .logo-light {
+  display: block;
+}
+
+/* =====================
+   SMOOTH TRANSITIONS on theme switch
+   ===================== */
+body,
+nav, .Brutal, .card, .footer, .feat,
+.input, .lbutton, .login, .button,
+.metric-block, .vf-stat, .upload-card,
+.attempts-table th, .attempts-table td {
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Face 2 Fate{% endblock %}</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..900;1,9..40,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+
+    <!-- ★ STEP 0: Apply saved theme instantly — prevents flash on load ★ -->
+    <script>
+        (function() {
+            var t = localStorage.getItem('f2f-theme');
+            if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+
+    <!-- ★ STEP 1: Theme variables — MUST be first CSS ★ -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+
+    <!-- Shared Navbar + Footer CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+
+    <!-- Page-specific CSS -->
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <nav>
+        <div class="Brutal navbar {% block navbar_extra_class %}{% endblock %}">
+            <div class="logo">
+                <a href="/">
+                    <img class="logo-img logo-dark" src="{{ url_for('static', filename='images/logo_dark.png') }}"
+                        alt="F2F">
+                    <img class="logo-img logo-light" src="{{ url_for('static', filename='images/logo_light.png') }}"
+                        alt="F2F">
+                </a>
+            </div>
+            <ul>
+                <li class="underline"><a href="/#Home">Home</a></li>
+                <li class="underline"><a href="/#features">Features</a></li>
+                <li class="underline"><a href="/#Demo">Demo</a></li>
+                {% block nav_auth %}
+                {% if logged_in %}
+                <a href="/logout"><button class="login signup">Logout</button></a>
+                {% else %}
+                <a href="/login"><button class="login signin">Signin</button></a>
+                <a href="/signup"><button class="login signup">Signup</button></a>
+                {% endif %}
+                {% endblock %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ================= PAGE CONTENT ================= -->
+    {% block content %}{% endblock %}
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="footer flex footer-inner">
+            <p>© 2026 Face 2 Fate. All rights reserved.</p>
+            <div class="flex footer-links">
+                <a href="/terms">
+                    <p>Terms</p>
+                </a>
+                <a href="/privacy">
+                    <p>Privacy</p>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ★ STEP 2: Theme toggle script — at end of body ★ -->
+    <script src="{{ url_for('static', filename='js/toggle.js') }}"></script>
+
+</body>
+
+</html>

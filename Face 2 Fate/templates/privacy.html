@@ -1,0 +1,294 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy — Face 2 Fate{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/legal.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="legal-wrapper">
+
+    <!-- Hero Bar -->
+    <div class="legal-hero">
+        <div class="legal-hero-tag">◈ LEGAL</div>
+        <h1 class="legal-hero-title">Privacy Policy</h1>
+        <p class="legal-hero-sub">Last updated: <span class="legal-date">March 30, 2026</span></p>
+        <div class="legal-hero-line"></div>
+    </div>
+
+    <!-- Intro Banner -->
+    <div class="legal-intro-card">
+        <div class="legal-intro-icon">🔒</div>
+        <p class="legal-intro-text">
+            Your privacy matters to us. This Privacy Policy explains how <strong>Face 2 Fate</strong> collects, uses, stores, and protects your personal information when you use our interview analysis platform.
+        </p>
+    </div>
+
+    <!-- Navigation Sidebar + Content -->
+    <div class="legal-layout">
+
+        <!-- Sticky ToC -->
+        <aside class="legal-toc">
+            <div class="legal-toc-title">◆ &nbsp;Contents</div>
+            <nav>
+                <a href="#collection"   class="legal-toc-link">01 — Data We Collect</a>
+                <a href="#how-we-use"   class="legal-toc-link">02 — How We Use Data</a>
+                <a href="#third-party"  class="legal-toc-link">03 — Third-Party Services</a>
+                <a href="#storage"      class="legal-toc-link">04 — Data Storage</a>
+                <a href="#retention"    class="legal-toc-link">05 — Data Retention</a>
+                <a href="#security"     class="legal-toc-link">06 — Security</a>
+                <a href="#rights"       class="legal-toc-link">07 — Your Rights</a>
+                <a href="#cookies"      class="legal-toc-link">08 — Cookies & Sessions</a>
+                <a href="#children"     class="legal-toc-link">09 — Children's Privacy</a>
+                <a href="#changes-p"    class="legal-toc-link">10 — Policy Changes</a>
+                <a href="#contact-p"    class="legal-toc-link">11 — Contact</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="legal-content">
+
+            <section id="collection" class="legal-section">
+                <div class="legal-section-num">01</div>
+                <h2 class="legal-section-title">Data We Collect</h2>
+                <p>Face 2 Fate collects data in the following categories to provide and improve our service:</p>
+
+                <div class="legal-data-grid">
+                    <div class="legal-data-card">
+                        <div class="legal-data-card-icon">👤</div>
+                        <div class="legal-data-card-title">Account Information</div>
+                        <div class="legal-data-card-body">Username, email address, and password (stored in our database upon registration).</div>
+                    </div>
+                    <div class="legal-data-card">
+                        <div class="legal-data-card-icon">🎥</div>
+                        <div class="legal-data-card-title">Video Recordings</div>
+                        <div class="legal-data-card-body">Interview response videos you upload, stored on our server for analysis and future review.</div>
+                    </div>
+                    <div class="legal-data-card">
+                        <div class="legal-data-card-icon">📊</div>
+                        <div class="legal-data-card-title">Analysis Results</div>
+                        <div class="legal-data-card-body">Eye contact, blink rate, emotion distribution, hand movement, pitch, energy, filler word counts, and transcripts derived from your videos.</div>
+                    </div>
+                    <div class="legal-data-card">
+                        <div class="legal-data-card-icon">🖥</div>
+                        <div class="legal-data-card-title">Usage Data</div>
+                        <div class="legal-data-card-body">Session information, pages visited, and platform interactions for improving user experience.</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="how-we-use" class="legal-section">
+                <div class="legal-section-num">02</div>
+                <h2 class="legal-section-title">How We Use Your Data</h2>
+                <p>We use your data exclusively to provide, operate, and improve the Face 2 Fate platform. Specifically:</p>
+                <ul class="legal-list">
+                    <li><strong>Service Delivery</strong> — Processing your uploaded videos through our AI analysis pipeline to generate confidence scores, emotional feedback, and speech reports.</li>
+                    <li><strong>Account Management</strong> — Authenticating your identity, maintaining session state, and enabling access to your historical analysis reports.</li>
+                    <li><strong>Platform Improvement</strong> — Understanding how users interact with the platform to fix bugs and improve features.</li>
+                    <li><strong>Communication</strong> — Responding to support requests or enquiries you submit to us.</li>
+                </ul>
+                <p>We do <strong>not</strong> use your data for advertising, sell it to third parties, or use it to train AI models without your explicit consent.</p>
+
+                <div class="legal-callout legal-callout--good">
+                    <span class="legal-callout-icon">✓</span>
+                    <span>Your video content is processed solely to generate your personal analysis report. It is never shared, sold, or disclosed to third parties.</span>
+                </div>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="third-party" class="legal-section">
+                <div class="legal-section-num">03</div>
+                <h2 class="legal-section-title">Third-Party Services</h2>
+                <p>To deliver our analysis features, Face 2 Fate integrates with the following third-party services. Your data may be transmitted to these providers only as necessary to perform processing:</p>
+
+                <div class="legal-third-party-table">
+                    <div class="legal-tp-row legal-tp-header">
+                        <span>Service</span>
+                        <span>Provider</span>
+                        <span>Purpose</span>
+                    </div>
+                    <div class="legal-tp-row">
+                        <span>Whisper ASR</span>
+                        <span>Groq Cloud</span>
+                        <span>Audio transcription & filler word detection</span>
+                    </div>
+                    <div class="legal-tp-row">
+                        <span>LLaMA LLM</span>
+                        <span>Groq Cloud</span>
+                        <span>Generating natural-language interview feedback</span>
+                    </div>
+                    <div class="legal-tp-row">
+                        <span>MediaPipe</span>
+                        <span>Google (local)</span>
+                        <span>Facial landmark & hand gesture detection (runs locally)</span>
+                    </div>
+                    <div class="legal-tp-row">
+                        <span>HSEmotion</span>
+                        <span>Open Source (local)</span>
+                        <span>Facial emotion recognition (runs locally on our server)</span>
+                    </div>
+                </div>
+
+                <p>Audio data sent to Groq is subject to <a href="https://groq.com/privacy-policy/" target="_blank" class="legal-inline-link">Groq's Privacy Policy</a>. We encourage you to review their policies. All video-based analysis (face, hand, emotion) is performed locally on our infrastructure and is never transmitted externally.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="storage" class="legal-section">
+                <div class="legal-section-num">04</div>
+                <h2 class="legal-section-title">Data Storage</h2>
+                <p>All user data is stored on our locally hosted infrastructure:</p>
+                <ul class="legal-list">
+                    <li><strong>Database</strong> — User accounts, analysis metrics, and report data are stored in a MySQL database hosted on our server.</li>
+                    <li><strong>File Storage</strong> — Uploaded video files and extracted audio files are stored in our server's <code class="legal-code">uploads/</code> directory.</li>
+                    <li><strong>No Cloud Storage</strong> — We do not use external cloud storage services (e.g. AWS S3, Google Cloud Storage) to store your uploaded files.</li>
+                </ul>
+
+                <div class="legal-callout legal-callout--warn">
+                    <span class="legal-callout-icon">⚠</span>
+                    <span>While we take reasonable measures to protect stored data, no storage system is 100% impenetrable. Please do not upload videos containing sensitive personal information beyond what is necessary for interview practice.</span>
+                </div>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="retention" class="legal-section">
+                <div class="legal-section-num">05</div>
+                <h2 class="legal-section-title">Data Retention</h2>
+                <p>We retain your data for as long as your account remains active and as necessary to provide you with the service. Specifically:</p>
+                <ul class="legal-list">
+                    <li>Video files, analysis results, and report data are retained until you actively delete them via the platform's delete feature, or until your account is terminated.</li>
+                    <li>Account information (username, email) is retained for the duration of your account's existence.</li>
+                    <li>Upon account deletion, we will make reasonable efforts to delete all associated data within 30 days.</li>
+                </ul>
+                <p>You can delete individual video attempts at any time from the upload history page.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="security" class="legal-section">
+                <div class="legal-section-num">06</div>
+                <h2 class="legal-section-title">Security</h2>
+                <p>We implement reasonable technical and organisational measures to protect your data against unauthorised access, alteration, disclosure, or destruction. These include:</p>
+                <ul class="legal-list">
+                    <li>Server-side session management to protect authenticated access.</li>
+                    <li>Parameterised database queries to prevent SQL injection attacks.</li>
+                    <li>Access control ensuring users can only access their own video and analysis data.</li>
+                    <li>Background processing isolation to prevent analysis pipeline interference.</li>
+                </ul>
+                <p>However, no method of transmission over the internet or electronic storage is 100% secure. We cannot guarantee absolute security and encourage you to use a strong, unique password.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="rights" class="legal-section">
+                <div class="legal-section-num">07</div>
+                <h2 class="legal-section-title">Your Rights</h2>
+                <p>Depending on your jurisdiction, you may have the following rights regarding your personal data:</p>
+
+                <div class="legal-rights-grid">
+                    <div class="legal-right-item">
+                        <span class="legal-right-num">—</span>
+                        <div>
+                            <strong>Right of Access</strong>
+                            <p>Request a copy of the personal data we hold about you.</p>
+                        </div>
+                    </div>
+                    <div class="legal-right-item">
+                        <span class="legal-right-num">—</span>
+                        <div>
+                            <strong>Right to Deletion</strong>
+                            <p>Request deletion of your account and associated data. You can also self-delete video attempts directly from the platform.</p>
+                        </div>
+                    </div>
+                    <div class="legal-right-item">
+                        <span class="legal-right-num">—</span>
+                        <div>
+                            <strong>Right to Rectification</strong>
+                            <p>Request correction of inaccurate personal information linked to your account.</p>
+                        </div>
+                    </div>
+                    <div class="legal-right-item">
+                        <span class="legal-right-num">—</span>
+                        <div>
+                            <strong>Right to Object</strong>
+                            <p>Object to certain types of processing of your personal data where applicable under law.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p>To exercise any of these rights, contact us at the address provided in Section 11.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="cookies" class="legal-section">
+                <div class="legal-section-num">08</div>
+                <h2 class="legal-section-title">Cookies & Sessions</h2>
+                <p>Face 2 Fate uses a single server-side session cookie to maintain your authenticated login state. This cookie:</p>
+                <ul class="legal-list">
+                    <li>Is set only after you successfully log in.</li>
+                    <li>Contains only a session identifier — no personal data is stored in the cookie itself.</li>
+                    <li>Expires when you close your browser or log out.</li>
+                    <li>Is used exclusively for authentication and is not used for tracking or advertising.</li>
+                </ul>
+                <p>We do not use analytics cookies, advertising cookies, or any third-party tracking technologies.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="children" class="legal-section">
+                <div class="legal-section-num">09</div>
+                <h2 class="legal-section-title">Children's Privacy</h2>
+                <p>Face 2 Fate is not directed at children under the age of 13. We do not knowingly collect personal data from children under 13. If we become aware that we have inadvertently collected personal information from a child under 13, we will take steps to delete such information as soon as possible.</p>
+                <p>If you believe a child under 13 has provided us with personal information, please contact us immediately.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="changes-p" class="legal-section">
+                <div class="legal-section-num">10</div>
+                <h2 class="legal-section-title">Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time to reflect changes in our practices or applicable law. We will notify users of material changes by updating the "Last updated" date at the top of this page.</p>
+                <p>We encourage you to review this policy periodically. Your continued use of the platform after any changes indicates your acceptance of the updated policy.</p>
+            </section>
+
+            <div class="legal-divider"></div>
+
+            <section id="contact-p" class="legal-section">
+                <div class="legal-section-num">11</div>
+                <h2 class="legal-section-title">Contact</h2>
+                <p>If you have any questions, concerns, or requests regarding this Privacy Policy or how we handle your data, please contact us:</p>
+                <div class="legal-contact-grid">
+                    <div class="legal-contact-item">
+                        <span class="legal-contact-label">Platform</span>
+                        <span class="legal-contact-value">Face 2 Fate</span>
+                    </div>
+                    <div class="legal-contact-item">
+                        <span class="legal-contact-label">Email</span>
+                        <span class="legal-contact-value">privacy@face2fate.com</span>
+                    </div>
+                    <div class="legal-contact-item">
+                        <span class="legal-contact-label">Response Time</span>
+                        <span class="legal-contact-value">Within 5 business days</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer CTA -->
+            <div class="legal-footer-cta">
+                <p>Also read our</p>
+                <a href="/terms" class="legal-link-btn">Terms of Service →</a>
+            </div>
+
+        </main>
+    </div>
+
+</div>
+
+{% endblock %}
