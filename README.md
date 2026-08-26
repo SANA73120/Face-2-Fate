@@ -1,6 +1,7 @@
 <p align="center">
-  <img src="assets/banner.png" alt="Face 2 Fate - AI-Powered Multimodal Interview Analysis">
+  <img src="banner.png" alt="Face 2 Fate - AI-Powered Multimodal Interview Analysis">
 </p>
+
 **Face 2 Fate** is an AI-powered multi modal system that analyzes a candidate's interview performance and generates a confidence score with personalized feedback.
 
 The application combines **computer vision, audio analysis, speech recognition, NLP system** to evaluate multiple aspects of interview communication.
